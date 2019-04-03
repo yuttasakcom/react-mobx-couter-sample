@@ -1,5 +1,5 @@
 import React from "react";
-import { observable, computed } from "mobx";
+import { observable, computed, intercept } from "mobx";
 import { observer } from "mobx-react";
 
 class AppState {
@@ -31,6 +31,11 @@ class Counter extends React.Component {
 }
 
 const store = new AppState();
+
+intercept(store, "count", change => {
+  console.log("new: %s, old: %s", change.newValue, change.object.value);
+  return change;
+});
 
 const App = () => (
   <div>
