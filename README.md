@@ -1,1 +1,1 @@
-# React Simple Boilerplate
+# React Mobx Counter Sample
