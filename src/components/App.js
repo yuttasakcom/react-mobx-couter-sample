@@ -13,6 +13,12 @@ class AppState {
   inc() {
     this.count++;
   }
+
+  dec() {
+    if (this.count <= 0) return;
+
+    this.count -= 1;
+  }
 }
 
 @observer
@@ -24,7 +30,7 @@ class Counter extends React.Component {
         <p>counter: {appState.getCount}</p>
         <br />
         <button onClick={() => appState.inc()}>+</button>&nbsp;
-        <button onClick={() => (appState.count -= 1)}>-</button>
+        <button onClick={() => appState.dec()}>-</button>
       </div>
     );
   }
